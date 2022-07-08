@@ -1,7 +1,37 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.nav-logo {
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+.logo {
+  width: 3rem;
+  height: 3rem;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
+}
+.jumbotron-img-top {
+  height: auto;
+  display: flex;
+}
+.jumbotron-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 3px;
+  grid-row-gap: 1px;
+  padding: 3rem;
+}
+.cardRow {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+}
+.favorite-icon {
+  position: absolute;
+  left: 6rem;
+}

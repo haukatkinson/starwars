@@ -11,7 +11,11 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Card } from "./component/card";
 import { Planets } from "./component/planets";
-import { People } from "./component/people"
+import { People } from "./component/people";
+import { Planet } from "./component/planet";
+import { Jumbotron } from "./component/jumbotron";
+import { Person } from "./component/person";
+import { Carousel } from "./component/carousel";
 
 //create your first component
 const Layout = () => {
@@ -28,6 +32,8 @@ const Layout = () => {
             <Route element={<Home />} path="/" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
+            <Route element={<Planet />} exact path="/planets/:id" />
+            <Route element={<Person />} exact path="/people/:id" />
             <Route element={<Planets />} path="/planets" />
             <Route element={<People />} path="/people" />
             <Route element={<h1>Not found!</h1>} />

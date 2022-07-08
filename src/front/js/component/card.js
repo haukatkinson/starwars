@@ -1,8 +1,13 @@
 import React from "react";
+import IconButton from "@mui/material/IconButton";
+import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
 
 const Card = ({ img, title, text, link, link_text }) => {
   return (
-    <div className="card mb-3 text-light bg-dark" style={{ width: "18rem" }}>
+    <div
+      className="card mb-3 text-light bg-dark mx-2"
+      style={{ width: "18rem" }}
+    >
       <img
         src={img ? img : "https://via.placeholder.com/468"}
         className="card-img-top"
@@ -13,6 +18,12 @@ const Card = ({ img, title, text, link, link_text }) => {
         <a href={link ? link : "#"} className="btn btn-primary">
           {link_text ? link_text : "Find out more"}
         </a>
+        <IconButton>
+          <FavoriteTwoToneIcon
+            color="secondary"
+            className="favorite-icon"
+          />
+        </IconButton>
       </div>
     </div>
   );

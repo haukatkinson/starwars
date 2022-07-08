@@ -11,20 +11,19 @@ const Planets = () => {
 
   return (
     <div className="container text-light">
-      <div className="row">
-        <div className="col-8 offset-2 d-flex flex-row flex-wrap justify-content-space-between">
-          {store.planets.map((planet, idx) => {
-            return (
+      <div className="cardRow">
+        {store.planets.map((planet, idx) => {
+          return (
+            <div className="col" key={idx}>
               <Card
-                key={idx}
                 imgSrc={planet.img}
                 title={planet.name}
                 text={`${planet.name} is a planet with a gravity of ${planet.gravity}, and it has a ${planet.climate} climate.`}
                 link={planet.url}
               />
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
