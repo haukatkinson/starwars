@@ -10,19 +10,19 @@ db = SQLAlchemy()
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    _password = db.Column(db.String(256), unique=False, nullable=False)
+    __password = db.Column(db.String(255), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     @hybrid_property
     def password(self):
-        return self._password
+        return self.__password
 
     @password.setter
     def passowrd(self, password):
-        self._password = generate_password_hash(password)
+        self.__password = generate_password_hash(password)
 
     def check_pwd_hash(self, pwd):
-       return check_password_hash(self._password,pwd)
+       return check_password_hash(self.__password,pwd)
         
 
     def __repr__(self):
