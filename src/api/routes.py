@@ -5,6 +5,11 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Planets, People, Starships
 from api.utils import generate_sitemap, APIException
 
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+
+
 api = Blueprint('api', __name__)
 
 
@@ -80,3 +85,34 @@ def get_starship(id):
         ),200
 
     return jsonify(response_body), 200
+
+
+@api.route('/protected', methods=['GET'])
+@jwt_required()
+def super_secret():
+        id=get.jwt.identity(),
+        return jsonify(secret_message='Hello World')
+
+
+@api.route('/login', methods=['POST'])
+def login():
+    body = request.json
+    """
+    {
+        "email": "Some User Authenticator",
+        "pass": "Some User Password"
+    }
+    """
+    user = User.query.filter_by(
+        email=body.get("email","").lower()
+    ).first()
+
+    if body:
+        if body.get("pass", None) == user.password:
+            return jsonify(
+                token=create_access_token(
+                    identity=user.email
+                    )
+            ),200
+        return jsonify(msg="incorect passowrd or username"),400
+
