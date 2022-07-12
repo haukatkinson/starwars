@@ -4,6 +4,16 @@ from flask_admin import Admin
 from .models import db, User, People, Starships, Planets
 from flask_admin.contrib.sqla import ModelView
 
+class UserView(ModelView):
+    colum_list = ['email', 'is_active', '_password']
+    column_editable_list = ['is_active']
+    create_modal = True
+    edit_modal = True
+    # form_extra_fields = {
+    #     'password': PasswordField('password')
+    # }
+
+
 def setup_admin(app):
     app.secret_key = os.environ.get('FLASK_APP_KEY', 'sample key')
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
